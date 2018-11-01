@@ -8,10 +8,10 @@ export const constants = {
       x:0,y:18,
     },
     area2:{
-      x:120,y:18,
+      x:102,y:18,
     }
   },
 
-  fieldWidth:685,
-  fieldHeight:485,
+  fieldWidth:705,
+  fieldHeight:470,
 };
