@@ -6194,6 +6194,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dis
 
 /***/ }),
 
+/***/ "./src/constants.js":
+/*!**************************!*\
+  !*** ./src/constants.js ***!
+  \**************************/
+/*! exports provided: constants */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"constants\", function() { return constants; });\nconst constants = {\n  statsBombFieldWidth: 120,\n  statsBombFieldHeight: 80,\n  statsBombPenaltyAreas: {\n    areaWidth: 18,\n    areaHeight: 44,\n    area1: {\n      x: 0,\n      y: 18\n    },\n    area2: {\n      x: 120,\n      y: 18\n    }\n  },\n  fieldWidth: 685,\n  fieldHeight: 485\n};\n\n//# sourceURL=webpack:///./src/constants.js?");
+
+/***/ }),
+
 /***/ "./src/field.js":
 /*!**********************!*\
   !*** ./src/field.js ***!
@@ -6202,7 +6214,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dis
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n\n\nfunction generateField(svg) {\n  const width = 685;\n  const height = 485;\n  const y = d3__WEBPACK_IMPORTED_MODULE_0__[\"range\"](0, height);\n  const line = d3__WEBPACK_IMPORTED_MODULE_0__[\"line\"]().x(() => {\n    return width / 2;\n  }).y(d => {\n    return d;\n  });\n  const field = svg.append('rect').attr(\"x\", 0).attr(\"y\", 0).attr(\"width\", width).attr(\"height\", height).attr(\"class\", \"field\");\n  const halfwayLine = svg.append(\"path\") // .attr(\"fill\", \"none\")\n  .attr(\"stroke\", \"white\").attr(\"stroke-width\", 1).attr(\"d\", line(y));\n  return field;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (generateField);\n\n//# sourceURL=webpack:///./src/field.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n\n\n\nfunction generateField(svg) {\n  const width = _constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].fieldWidth;\n  const height = _constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].fieldHeight;\n  const fieldXScale = d3__WEBPACK_IMPORTED_MODULE_0__[\"scaleLinear\"]().domain([0, _constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].statsBombFieldWidth]).range([0, width]);\n  const fieldYScale = d3__WEBPACK_IMPORTED_MODULE_0__[\"scaleLinear\"]().domain([0, _constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].statsBombFieldHeight]).range([0, height]);\n  const areaWidths = fieldXScale(_constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].statsBombPenaltyAreas.areaWidth);\n  const areaHeights = fieldYScale(_constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].statsBombPenaltyAreas.areaHeight);\n  const penArea1StartX = fieldXScale(_constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].statsBombPenaltyAreas.area1.x);\n  const penArea1StartY = fieldYScale(_constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].statsBombPenaltyAreas.area1.y);\n  const penArea2StartX = fieldXScale(_constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].statsBombPenaltyAreas.area2.x);\n  const penArea2StartY = fieldYScale(_constants__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].statsBombPenaltyAreas.area2.y);\n  const field = svg.append('rect').attr(\"x\", 0).attr(\"y\", 0).attr(\"width\", width).attr(\"height\", height).attr(\"class\", \"field\");\n  svg.append('line').attr(\"x1\", width / 2).attr(\"x2\", width / 2).attr(\"y1\", 0).attr(\"y2\", height).attr(\"class\", \"line\");\n  svg.append('rect').attr(\"x\", penArea1StartX).attr(\"y\", penArea1StartY).attr(\"width\", areaWidths).attr(\"height\", areaHeights).attr(\"class\", \"line\");\n  return field;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (generateField);\n\n//# sourceURL=webpack:///./src/field.js?");
 
 /***/ }),
 
