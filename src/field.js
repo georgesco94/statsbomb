@@ -34,7 +34,7 @@ function generateField( svg ) {
     .attr("cx", fieldXScale(60))
     .attr("cy", fieldYScale(40))
     .attr("r", 60 )
-    .attr("class", 'center-circle')
+    .attr("class", 'center-circle');
   svg.append('circle')
     .attr("cx", fieldXScale(60))
     .attr("cy", fieldYScale(40))
@@ -67,6 +67,19 @@ function drawPenalties( svg,fieldXScale,fieldYScale ) {
       .attr("width", areaWidths)
       .attr("height", areaHeights)
       .attr("class", "penalty-area");
+
+  svg.append('circle')
+      .attr("cx", fieldXScale(12))
+      .attr("cy", fieldYScale(40))
+      .attr("r", 1 )
+      .attr("class", 'center-circle')
+      .style("fill", 'white');
+  svg.append('circle')
+      .attr("cx", fieldXScale(108))
+      .attr("cy", fieldYScale(40))
+      .attr("r", 1 )
+      .attr("class", 'center-circle')
+      .style("fill", 'white');
 }
 
 export default generateField;
