@@ -10,7 +10,7 @@ const field = generateField(svg);
 const receiveLocations = [];
 
 gameData.forEach( event => {
-  if (event.period === 2 && event.type.id === 42 && event.player.name === 'Jesse Lingard') {
+  if (event.period === 1 && event.type.id === 30 && event.pass.recipient && event.pass.recipient.name === 'Jordan Henderson') {
     addReceivePoint( svg, event.location );
   }
 });
